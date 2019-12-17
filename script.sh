@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Adjust Proper Directory
+cd $(dirname $0)
+
 # Read Config (If Any)
 Config_Dir="$(pwd)/config"
 Official_Dir="$Config_Dir/officialdir"
@@ -79,7 +82,7 @@ while [ "$Choice" != "" ]; do
         
         "*New Note*")   # Create new Note
             # Get new File Name
-            newFile=`printf "$Files" | sed 's/\..//;/^$/d' | sort | mod-dmenu -p "New Note" -width 20`
+            newFile=`printf "$Files" | sed 's/\..//;s/\..//;/^$/d' | sort | mod-dmenu -p "New Note" -width 20`
 
             # Create File
             if [ "$newFile" != "" ]; then
@@ -88,8 +91,8 @@ while [ "$Choice" != "" ]; do
             ;;
 
         "*Remove*")     # Remove Note/Directory
-            # Get what to Remove    # TODO: Remove '..' and NO Empty Choices!
-            deleteMe=`printf "$Dirs$Files" | sed 's/\..//' | sort | mod-dmenu -p "New Directory" -width 20 | sed 's/[][]//g'`
+            # Get what to Remove    
+            deleteMe=`printf "$Dirs$Files" | sed 's/\..//;s/\..//;/^$/d' | sort | mod-dmenu -p "Remove" -width 20 | sed 's/[][]//g'`
 
             # Delete Selection!
             if [ "$deleteMe" != "" ]; then
