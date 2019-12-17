@@ -30,13 +30,13 @@ Official_Dir=$(< $Official_Dir)
 mkdir -p $Official_Dir
 cd $Official_Dir
 
-# TODO: Better Color Scheme lolz
+# Dmenu Color Scheme
 alias mod-dmenu='rofi -dmenu -i \
                     -font "Monospace 10" \
-                    -color-window "#7B241C, #641E16, #7B241C" \
-                    -color-normal "#A93226, #FFFFFF, #E74C3C, #CC0000, #2C3E50" \
-                    -color-active "#222222, #b1b4b3, #222222, #007763, #b1b4b3" \
-                    -color-urgent "#222222, #b1b4b3, #222222, #77003d, #b1b4b3"'
+                    -color-window "#0A2342, #0A2342, #0A2342" \
+                    -color-normal "#9BC1BC, #B24C63, #9BC1BC, #1E91D6, #2C3E50" \
+                    -color-active "#000000, #B1B4B3, #000000, #007763, #B1B4B3" \
+                    -color-urgent "#222222, #B1B4B3, #222222, #77003D, #B1B4B3"'
 
 
 # Open Dmenu
@@ -105,7 +105,7 @@ while [ "$Choice" != "" ]; do
                 cd "$Choice"
 
             # Edit File
-            else
+            elif [ "$Choice" != "" ]; then
                 vim "$Choice"
             fi
             ;;
